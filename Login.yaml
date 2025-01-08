@@ -1,0 +1,34 @@
+# Login.yaml
+
+appId: io.klikit.enterprise.dev
+---
+- launchApp:
+    appId: "io.klikit.enterprise.dev"
+    clearState: true
+    label: open klikt dev
+
+#- longPressOn: "Email"
+#- tapOn: 'Select All'
+#- eraseText
+
+#Email
+- tapOn: 'Email'
+- inputText:
+    label: user's email input
+    text: 'ehatesham.islam+5@vivasoftltd.com'
+
+#Password
+- tapOn: 'Password'
+- inputText:
+    label: user's password input
+    text: 'Asdasd123$'
+- hideKeyboard
+
+#login
+- tapOn:
+    label: login to klikit
+    text: 'Log in'
+# hide the print devices
+- tapOn:
+    label: hide the print devices
+    point: 92%,48%

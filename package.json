@@ -1,0 +1,18 @@
+{
+  "name": "qa-automation-nma-by.meastro",
+  "version": "1.0.0",
+  "description": "Maestro is built on learnings from its predecessors (Appium, Espresso, UIAutomator, XCTest, Selenium, Playwright) and allows you to easily define and test your Flows",
+  "main": "index.js",
+  "scripts": {
+    "install meastro": "brew tap mobile-dev-inc/tap  \n  brew install maestro",
+    "maestro studio": "maestro studio",
+    "Connecting to Your Device": "maestro test",
+    "login": "maestro test login.yaml",
+    "homepage": "maestro test homepage.yaml",
+    "Add Order": "maestro test Add_Order.yaml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shikder-klikit/QA-Automation-NMA-by.Meastro.git"
+  }
+}
