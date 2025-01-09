@@ -2,6 +2,7 @@
 
 appId: io.klikit.enterprise.dev
 ---
+- runScript: Klikit_NMA_Pages/Login.js
 - launchApp:
     appId: "io.klikit.enterprise.dev"
     clearState: true
@@ -15,13 +16,13 @@ appId: io.klikit.enterprise.dev
 - tapOn: 'Email'
 - inputText:
     label: user's email input
-    text: 'ehatesham.islam+5@vivasoftltd.com'
+    text: ${output.Email}
 
 #Password
 - tapOn: 'Password'
 - inputText:
     label: user's password input
-    text: 'Asdasd123$'
+    text: ${output.Password}
 - hideKeyboard
 
 #login

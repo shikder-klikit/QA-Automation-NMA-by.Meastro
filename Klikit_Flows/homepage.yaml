@@ -67,4 +67,4 @@ appId: io.klikit.enterprise.dev
 #    end: "55%,16%"
 #    duration: 423
 #- assertVisible: "App Version :"
-- stopApp
+#- stopApp

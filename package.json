@@ -7,9 +7,11 @@
     "install meastro": "brew tap mobile-dev-inc/tap  \n  brew install maestro",
     "maestro studio": "maestro studio",
     "Connecting to Your Device": "maestro test",
-    "login": "maestro test login.yaml",
-    "homepage": "maestro test homepage.yaml",
-    "Add Order": "maestro test Add_Order.yaml"
+    "login": "maestro test Klikit_Flows/Login.yaml",
+    "homepage": "maestro test Klikit_Flows/homepage.yaml",
+    "Add Order": "maestro test Klikit_Flows/Add_Order.yaml",
+    "Run Test": "maestro test runTest.yaml",
+    "Record test": "maestro record --local runTest.yaml"
   },
   "repository": {
     "type": "git",
