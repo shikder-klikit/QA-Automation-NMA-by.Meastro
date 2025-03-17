@@ -1,0 +1,70 @@
+appId: io.klikit.enterprise.dev
+---
+- launchApp
+- runFlow:
+    when:
+      visible: 'Log in'
+    file: Login.yaml # <-- Run commands from "Login.yaml"
+
+# hide the print devices
+- runFlow:
+      when:
+          visible: 'Connect to Bluetooth printer'
+      commands:
+          - tapOn:
+                label: hide the print devices
+                point: 92%,48%
+
+
+#store paused
+- assertVisible: "Store Live"
+- tapOn:
+    label: "pause/live button"
+    point: "10%,14%"
+- tapOn:
+    label: "paused reason"
+    point: "49%,60%"
+- tapOn: "Power Failure"
+- tapOn: "Pause"
+- assertVisible: "Store paused"
+- tapOn: "Okay"
+
+#store live
+- assertVisible: "Store Paused"
+- tapOn:
+    label: "pause/live button"
+    point: "10%,14%"
+- tapOn: "Go Live"
+- assertVisible: "Store resumed"
+- tapOn: "Okay"
+
+
+#Quick Actions
+
+#Generate Report
+- swipe:
+    start: "49%,53%"
+    end: "55%,16%"
+    duration: 423
+- assertVisible: "Generate Report"
+- assertVisible: "Z-Report"
+- assertVisible: "Today"
+- tapOn:
+    label: "Preview"
+    point: "11%,76%"
+- assertVisible: "Preview"
+- tapOn:
+    label: "download button"
+    point: "89%,6%"
+- assertVisible: "File successfully downloaded to Download/klikit"
+- tapOn: "Back"
+
+
+#App Version info
+
+#- swipe:
+#    start: "49%,53%"
+#    end: "55%,16%"
+#    duration: 423
+#- assertVisible: "App Version :"
+#- stopApp

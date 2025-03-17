@@ -1,0 +1,35 @@
+# Login.yaml
+
+appId: io.klikit.enterprise.dev
+---
+- runScript: Klikit_NMA_Pages/Login.js
+- launchApp:
+    appId: "io.klikit.enterprise.dev"
+    clearState: true
+    label: open klikt dev
+
+#- longPressOn: "Email"
+#- tapOn: 'Select All'
+#- eraseText
+
+#Email
+- tapOn: 'Email'
+- inputText:
+    label: user's email input
+    text: ${output.Email}
+
+#Password
+- tapOn: 'Password'
+- inputText:
+    label: user's password input
+    text: ${output.Password}
+- hideKeyboard
+
+#login
+- tapOn:
+    label: login to klikit
+    text: 'Log in'
+# hide the print devices
+- tapOn:
+    label: hide the print devices
+    point: 92%,48%

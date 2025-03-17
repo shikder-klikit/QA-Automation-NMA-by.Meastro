@@ -1,0 +1,62 @@
+appId: io.klikit.enterprise.dev
+---
+- launchApp
+- runFlow:
+    when:
+      visible: 'Log in'
+    file: Login.yaml # <-- Run commands from "Login.yaml"
+
+# hide the print devices
+- runFlow:
+    when:
+      visible: 'Connect to Bluetooth printer'
+    commands:
+      - tapOn:
+          label: hide the print devices
+          point: 92%,48%
+
+#Add_Order_happyPath
+- assertVisible: "Add Order"
+- tapOn: "Add Order"
+- assertVisible: "meat theory"
+- tapOn: "meat theory"
+- assertVisible: "Tikoy Cheese Turon\n₱178.00"
+- tapOn: "Tikoy Cheese Turon\n₱178.00"
+- assertVisible: "csv modifier 3\n+ ₱13.50"
+- tapOn: "csv modifier 3\n+ ₱13.50"
+- tapOn:
+    label: "Add to card"
+    point: "68%,94%"
+- assertVisible: "View Cart"
+- tapOn: "View Cart"
+- swipe:
+    start: "51%,83%"
+    end: "49%,65%"
+    duration: 248
+- swipe:
+    start: "46%,82%"
+    end: "50%,51%"
+    duration: 415
+- assertVisible: "Pay"
+- tapOn: "Pay"
+- assertVisible: "Card"
+- tapOn: "Card"
+- tapOn:
+    label: "visa"
+    point: "19%,43%"
+- tapOn: "Pay"
+- assertVisible: "New Order!"
+- tapOn: "View Orders"
+- tapOn:
+    label: "go to order details"
+    point: "50%,41%"
+- assertVisible: "Ready"
+- tapOn: "Ready"
+- tapOn: "Ready"
+- assertVisible: "Complete"
+- tapOn: "Complete"
+- tapOn: "Complete"
+- assertVisible: "Delivered"
+- "back"
+- tapOn: "Home"
+- stopApp
