@@ -33,16 +33,16 @@ jobs:
 
       - name: Ensure Target Directory Exists
         run: |
-          mkdir -p /home/runner/work/Findit-App/
-          cp src/test/Apps/V1.2.2.apk /home/runner/work/Findit-App/V1.2.2.apk
+          mkdir -p /home/runner/work/klikit-App/
+          cp Apps/DEV-416.apk /home/runner/work/klikit-App/DEV-416.apk
           uname -m
 
       - name: Verify APK Existence
         run: |
-          if [ -f src/test/Apps/V1.2.2.apk ]; then
+          if [ -f Apps/DEV-416.apk ]; then
           echo "✅ APK found!"
-          file src/test/Apps/V1.2.2.apk  # Check if it's a valid APK
-          ls -lh src/test/Apps/V1.2.2.apk
+          file Apps/DEV-416.apk  # Check if it's a valid APK
+          ls -lh Apps/DEV-416.apk
           else
           echo "❌ APK NOT FOUND!"
           exit 1
@@ -50,8 +50,8 @@ jobs:
 
       - name: Debug APK Path and Permissions
         run: |
-         ls -lah /home/runner/work/Findit-App/V1.2.2.apk
-         file /home/runner/work/Findit-App/V1.2.2.apk
+         ls -lah /home/runner/work/klikit-App/DEV-416.apk
+         file /home/runner/work/klikit-App/DEV-416.apk
         # ✅ Cache Android SDK (Prevents re-downloading SDK)
       - name: Cache Android SDK
         id: cache-android-sdk
@@ -118,7 +118,7 @@ jobs:
 
       - name: Install app on emulator
         run: |
-          adb install src/test/Apps/V1.2.2.apk  # Replace with the path to your APK file
+          adb install Apps/DEV-416.apk  # Replace with the path to your APK file
 
       - name: Install Maestro
         run: |

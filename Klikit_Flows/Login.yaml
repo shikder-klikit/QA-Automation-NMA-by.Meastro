@@ -33,3 +33,4 @@ appId: io.klikit.enterprise.dev
 - tapOn:
     label: hide the print devices
     point: 92%,48%
+- stopApp

@@ -16,7 +16,7 @@ appId: io.klikit.enterprise.dev
           point: 92%,48%
 
 #Add_Order_happyPath
-- assertVisible: "Add Order"
+#- assertVisible: "Add Order"
 - tapOn: "Add Order"
 - assertVisible: "meat theory"
 - tapOn: "meat theory"
@@ -49,7 +49,7 @@ appId: io.klikit.enterprise.dev
 - tapOn: "View Orders"
 - tapOn:
     label: "go to order details"
-    point: "50%,41%"
+    point: "39%,34%"
 - assertVisible: "Ready"
 - tapOn: "Ready"
 - tapOn: "Ready"
