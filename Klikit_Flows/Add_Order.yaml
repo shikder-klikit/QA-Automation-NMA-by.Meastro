@@ -49,7 +49,7 @@ appId: io.klikit.enterprise.dev
 - tapOn: "View Orders"
 - tapOn:
     label: "go to order details"
-    point: "39%,34%"
+    point: "12%,36%"
 - assertVisible: "Ready"
 - tapOn: "Ready"
 - tapOn: "Ready"

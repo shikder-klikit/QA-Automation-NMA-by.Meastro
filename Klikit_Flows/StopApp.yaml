@@ -1,0 +1,4 @@
+appId: io.klikit.enterprise.dev
+---
+- launchApp
+- stopApp
