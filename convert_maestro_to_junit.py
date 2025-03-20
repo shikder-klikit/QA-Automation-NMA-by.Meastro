@@ -12,10 +12,10 @@ def parse_maestro_log(log_file):
         log_content = f.read()
 
     # Determine test status based on log content
-    if "FAILED" in log_content:
+    if "FAILED" in log_content or "failed" in log_content.lower():
         status = "failed"
         message = "Test failed. Check logs for details."
-    elif "PASSED" in log_content:
+    elif "PASSED" in log_content or "passed" in log_content.lower():
         status = "passed"
         message = ""
     else:

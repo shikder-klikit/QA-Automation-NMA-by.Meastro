@@ -150,9 +150,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install xmltodict  # Add any required Python packages
 
-      - name: Make Bash script executable
-        run: chmod +x ./runTests.sh
-
       - name: Run Bash script
         run: ./runTests.sh
 
@@ -165,4 +162,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
-          path: ./allure-report
+          path: ./allure-reportt

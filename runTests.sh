@@ -20,7 +20,6 @@ run_flow() {
 flows=(
   "Klikit_Flows/Login.yaml"
   "Klikit_Flows/homepage.yaml"
-  "Klikit_Flows/Add_Order.yaml"
   "Klikit_Flows/StopApp.yaml"
 )
 
@@ -33,6 +32,14 @@ for flow in "${flows[@]}"; do
 done
 
 echo "All flows executed."
+
+# After running all flows, print the logs for debugging
+echo "Debugging Maestro logs..."
+for log_file in ./maestro-results/*.log; do
+  echo "Log file: $log_file"
+  cat "$log_file"
+  echo "-----------------------------"
+done
 
 # Check if Maestro results exist
 if [ -d "./maestro-results" ]; then

@@ -13,6 +13,7 @@
     "Record test": "maestro record --local runTest.yaml",
     "install allure": "npm install -g allure-commandline",
     "Report generate": "maestro test runTest.yaml --format junit --output ./maestro-results/results.xml",
+    "genertaae Report": "allure generate ./allure-results",
     "Show Report": "allure serve ./allure-results"
   },
   "repository": {
