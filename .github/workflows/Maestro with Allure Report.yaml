@@ -34,15 +34,15 @@ jobs:
       - name: Ensure Target Directory Exists
         run: |
           mkdir -p /home/runner/work/klikit-App/
-          cp Apps/DEV-416.apk /home/runner/work/klikit-App/DEV-416.apk
+          cp Apps/klikitApp.apk /home/runner/work/klikit-App/klikitApp.apk
           uname -m
 
       - name: Verify APK Existence
         run: |
-          if [ -f Apps/DEV-416.apk ]; then
+          if [ -f Apps/klikitApp.apk ]; then
           echo "✅ APK found!"
-          file Apps/DEV-416.apk  # Check if it's a valid APK
-          ls -lh Apps/DEV-416.apk
+          file Apps/klikitApp.apk  # Check if it's a valid APK
+          ls -lh Apps/klikitApp.apk
           else
           echo "❌ APK NOT FOUND!"
           exit 1
@@ -50,8 +50,8 @@ jobs:
 
       - name: Debug APK Path and Permissions
         run: |
-         ls -lah /home/runner/work/klikit-App/DEV-416.apk
-         file /home/runner/work/klikit-App/DEV-416.apk
+         ls -lah /home/runner/work/klikit-App/klikitApp.apk
+         file /home/runner/work/klikit-App/klikitApp.apk
         # ✅ Cache Android SDK (Prevents re-downloading SDK)
       - name: Cache Android SDK
         id: cache-android-sdk
@@ -110,6 +110,14 @@ jobs:
             echo "🔄 Verifying Emulator Status..."
             adb wait-for-device
             adb shell getprop sys.boot_completed | grep -m 1 '1'
+          
+            echo "🔄 Waiting for Emulator to Boot..."
+            adb wait-for-device
+            while [ "$(adb shell getprop sys.boot_completed | tr -d '\r')" != "1" ]; do
+            sleep 10
+            echo "⏳ Still waiting for emulator to boot..."
+            done
+            echo "✅ Emulator is ready!"
 
             echo "📏 Disabling Animations"
             adb shell settings put global window_animation_scale 0
@@ -118,24 +126,40 @@ jobs:
 
       - name: Install app on emulator
         run: |
-          adb install Apps/DEV-416.apk  # Replace with the path to your APK file
+          adb install Apps/klikitApp.apk  # Replace with the path to your APK file
 
       - name: Install Maestro
         run: |
           curl -Ls "https://get.maestro.mobile.dev" | bash
           echo "$HOME/.maestro/bin" >> $GITHUB_PATH
 
-      - name: Run Maestro tests
+      - name: Debug Maestro Installation
         run: |
-            maestro test runTest.yaml --format junit --output ./maestro-results/results.xml
+          echo "Maestro binary path: $HOME/.maestro/bin"
+          ls -lah $HOME/.maestro/bin
+          echo "PATH: $PATH"
+          maestro --version
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'  # Use the required Python version
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install xmltodict  # Add any required Python packages
+
+      - name: Run Bash script
+        run: ./runTests.sh
 
       - name: Generate Allure report
         run: |
-            npm install -g allure-commandline
-            allure generate ./maestro-results -o ./allure-report
+          npm install -g allure-commandline
+          allure generate ./allure-results -o ./allure-report
 
       - name: Upload Allure report as artifact
         uses: actions/upload-artifact@v4
         with:
-            name: allure-report
-            path: ./allure-report
+          name: allure-report
+          path: ./allure-reportt

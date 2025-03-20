@@ -1,6 +1,0 @@
-appId: io.klikit.enterprise.dev
----
-- launchApp
-- runFlow: "Klikit_Flows/Login.yaml"
-#- runFlow: "Klikit_Flows/homepage.yaml"
-#- runFlow: "Klikit_Flows/Add_Order.yaml"
