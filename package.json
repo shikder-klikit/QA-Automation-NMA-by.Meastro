@@ -10,7 +10,6 @@
     "login": "maestro test Klikit_Flows/Login.yaml",
     "homepage": "maestro test Klikit_Flows/homepage.yaml",
     "Add Order": "maestro test Klikit_Flows/Add_Order.yaml",
-    "Run Test": "maestro test runTest.yaml",
     "Record test": "maestro record --local runTest.yaml",
     "install allure": "npm install -g allure-commandline",
     "Report generate": "maestro test runTest.yaml --format junit --output ./maestro-results/results.xml",

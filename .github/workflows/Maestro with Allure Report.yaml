@@ -125,9 +125,13 @@ jobs:
           curl -Ls "https://get.maestro.mobile.dev" | bash
           echo "$HOME/.maestro/bin" >> $GITHUB_PATH
 
-      - name: Run Maestro tests
-        run: |
-            maestro test runTest.yaml --format junit --output ./maestro-results/results.xml
+      # Give execute permissions to the Bash script
+      - name: Make Bash script executable
+        run: chmod +x ./runTests.sh
+
+      # Run the Bash script with sudo (full permissions)
+      - name: Run Bash script with full permissions
+        run: sudo ./runTests.sh --format junit --output ./maestro-results/results.xml
 
       - name: Generate Allure report
         run: |
