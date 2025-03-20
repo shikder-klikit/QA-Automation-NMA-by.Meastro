@@ -131,7 +131,7 @@ jobs:
 
       # Run the Bash script with sudo (full permissions)
       - name: Run Bash script with full permissions
-        run: sudo ./runTests.sh --format junit --output ./maestro-results/results.xml
+        run: sudo ./runTests.sh
 
       - name: Generate Allure report
         run: |
